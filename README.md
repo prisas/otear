@@ -7,11 +7,10 @@
 A modern media player for Windows 11 built on [mpv](https://mpv.io) (libmpv 0.42) with a native WinUI 3 interface.
 
 ![Otear playing a video, with the floating control bar (volume, playback buttons, audio and subtitle menus, speed, side panels, full screen and seek bar) over the picture and a subtitle line above it](docs/screenshots/player.png)
+<p align="center"><em>Playing a video with the floating control bar. The subtitles are raised 15 % with the position setting.</em></p>
 
 > [!IMPORTANT]
 > Made in the spirit of [IINA](https://iina.io) on macOS.
-
-<p align="center"><em>Playing a video with the floating control bar. The subtitles are raised 15 % with the position setting.</em></p>
 
 - **High-quality playback**: mpv's `gpu-next` renderer (libplacebo) on Direct3D 11 with zero-copy
   hardware decoding (D3D11VA). 4K/8K, H.264, H.265/HEVC (8/10-bit), AV1, VP9 and everything FFmpeg reads,

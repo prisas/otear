@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Application
+    x:Class="Otear.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Default">
+                    <!-- Dark: translucent graphite glass over the video -->
+                    <AcrylicBrush x:Key="OscBackgroundBrush" TintColor="#1C1C1C" TintOpacity="0.55" TintLuminosityOpacity="0.72" FallbackColor="#E6202020" />
+                    <AcrylicBrush x:Key="OscPopupBackgroundBrush" TintColor="#202020" TintOpacity="0.7" TintLuminosityOpacity="0.85" FallbackColor="#F0282828" />
+                    <SolidColorBrush x:Key="OscBorderBrush" Color="#1FFFFFFF" />
+                    <SolidColorBrush x:Key="SeekTrackBrush" Color="#40FFFFFF" />
+                    <SolidColorBrush x:Key="SeekThumbBrush" Color="#FFFFFFFF" />
+                    <SolidColorBrush x:Key="AudioCardBackgroundBrush" Color="#FF141414" />
+                </ResourceDictionary>
+                <ResourceDictionary x:Key="Light">
+                    <!-- Light: frosted white glass -->
+                    <AcrylicBrush x:Key="OscBackgroundBrush" TintColor="#F7F7F7" TintOpacity="0.6" TintLuminosityOpacity="0.8" FallbackColor="#F2F7F7F7" />
+                    <AcrylicBrush x:Key="OscPopupBackgroundBrush" TintColor="#FAFAFA" TintOpacity="0.75" TintLuminosityOpacity="0.9" FallbackColor="#F8FAFAFA" />
+                    <SolidColorBrush x:Key="OscBorderBrush" Color="#1A000000" />
+                    <SolidColorBrush x:Key="SeekTrackBrush" Color="#33000000" />
+                    <SolidColorBrush x:Key="SeekThumbBrush" Color="#FFFFFFFF" />
+                    <SolidColorBrush x:Key="AudioCardBackgroundBrush" Color="#FF1A1A1A" />
+                </ResourceDictionary>
+            </ResourceDictionary.ThemeDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

@@ -1,0 +1,20 @@
+# Build output
+bin/
+obj/
+artifacts/
+*.binlog
+TestResults/
+
+# IDE
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+*.DotSettings.user
+
+# Fetched / generated (see tools/)
+lib/mpv/
+.tools/
+testmedia/
+installer/obj/

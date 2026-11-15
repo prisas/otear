@@ -1,0 +1,452 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1074" height="762" viewBox="0 0 1074 762" font-family="'Segoe UI Variable Text','Segoe UI',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif">
+<title>Otear keyboard shortcuts</title>
+<rect x=".5" y=".5" width="1073" height="761" rx="14" fill="#161b22" stroke="#30363d"/>
+<rect x='28' y='30' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='28' y='28' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<rect x='28' y='28' width='58' height='58' rx='8' fill='#f778ba' fill-opacity='0.16' stroke='#f778ba' stroke-opacity='.75'/>
+<text x='36' y='45' font-size='11.5' font-weight='600' fill='#e6edf3'>Esc</text>
+<text x='36' y='63' font-size='13' font-weight='600' fill='#f778ba'>Exit full</text>
+<text x='36' y='78' font-size='13' font-weight='600' fill='#f778ba'>screen</text>
+<rect x='92' y='30' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='92' y='28' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<text x='100' y='45' font-size='14' font-weight='600' fill='#6e7681'>F1</text>
+<rect x='156' y='30' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='156' y='28' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<text x='164' y='45' font-size='14' font-weight='600' fill='#6e7681'>F2</text>
+<rect x='220' y='30' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='220' y='28' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<text x='228' y='45' font-size='14' font-weight='600' fill='#6e7681'>F3</text>
+<rect x='284' y='30' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='284' y='28' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<text x='292' y='45' font-size='14' font-weight='600' fill='#6e7681'>F4</text>
+<rect x='348' y='30' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='348' y='28' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<text x='356' y='45' font-size='14' font-weight='600' fill='#6e7681'>F5</text>
+<rect x='412' y='30' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='412' y='28' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<text x='420' y='45' font-size='14' font-weight='600' fill='#6e7681'>F6</text>
+<rect x='476' y='30' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='476' y='28' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<text x='484' y='45' font-size='14' font-weight='600' fill='#6e7681'>F7</text>
+<rect x='540' y='30' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='540' y='28' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<text x='548' y='45' font-size='14' font-weight='600' fill='#6e7681'>F8</text>
+<rect x='604' y='30' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='604' y='28' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<text x='612' y='45' font-size='14' font-weight='600' fill='#6e7681'>F9</text>
+<rect x='668' y='30' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='668' y='28' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<text x='676' y='45' font-size='14' font-weight='600' fill='#6e7681'>F10</text>
+<rect x='732' y='30' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='732' y='28' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<text x='740' y='45' font-size='14' font-weight='600' fill='#6e7681'>F11</text>
+<rect x='796' y='30' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='796' y='28' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<text x='804' y='45' font-size='14' font-weight='600' fill='#6e7681'>F12</text>
+<rect x='860' y='30' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='860' y='28' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<text x='868' y='45' font-size='11.5' font-weight='600' fill='#6e7681'>PrtSc</text>
+<rect x='924' y='30' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='924' y='28' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<text x='932' y='45' font-size='11.5' font-weight='600' fill='#6e7681'>Ins</text>
+<rect x='988' y='30' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='988' y='28' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<text x='996' y='45' font-size='11.5' font-weight='600' fill='#6e7681'>Del</text>
+<rect x='28' y='110' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='28' y='108' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<text x='36' y='125' font-size='14' font-weight='600' fill='#6e7681'>`</text>
+<rect x='92' y='110' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='92' y='108' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<rect x='92' y='108' width='58' height='58' rx='8' fill='#3fb950' fill-opacity='0.16' stroke='#3fb950' stroke-opacity='.75'/>
+<text x='100' y='125' font-size='14' font-weight='600' fill='#e6edf3'>1</text>
+<text x='100' y='158' font-size='13' font-weight='600' fill='#3fb950'>10 %</text>
+<rect x='156' y='110' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='156' y='108' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<rect x='156' y='108' width='58' height='58' rx='8' fill='#3fb950' fill-opacity='0.16' stroke='#3fb950' stroke-opacity='.75'/>
+<text x='164' y='125' font-size='14' font-weight='600' fill='#e6edf3'>2</text>
+<text x='164' y='158' font-size='13' font-weight='600' fill='#3fb950'>20 %</text>
+<rect x='220' y='110' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='220' y='108' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<rect x='220' y='108' width='58' height='58' rx='8' fill='#3fb950' fill-opacity='0.16' stroke='#3fb950' stroke-opacity='.75'/>
+<text x='228' y='125' font-size='14' font-weight='600' fill='#e6edf3'>3</text>
+<text x='228' y='158' font-size='13' font-weight='600' fill='#3fb950'>30 %</text>
+<rect x='284' y='110' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='284' y='108' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<rect x='284' y='108' width='58' height='58' rx='8' fill='#3fb950' fill-opacity='0.16' stroke='#3fb950' stroke-opacity='.75'/>
+<text x='292' y='125' font-size='14' font-weight='600' fill='#e6edf3'>4</text>
+<text x='292' y='158' font-size='13' font-weight='600' fill='#3fb950'>40 %</text>
+<rect x='348' y='110' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='348' y='108' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<rect x='348' y='108' width='58' height='58' rx='8' fill='#3fb950' fill-opacity='0.16' stroke='#3fb950' stroke-opacity='.75'/>
+<text x='356' y='125' font-size='14' font-weight='600' fill='#e6edf3'>5</text>
+<text x='356' y='158' font-size='13' font-weight='600' fill='#3fb950'>50 %</text>
+<rect x='412' y='110' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='412' y='108' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<rect x='412' y='108' width='58' height='58' rx='8' fill='#3fb950' fill-opacity='0.16' stroke='#3fb950' stroke-opacity='.75'/>
+<text x='420' y='125' font-size='14' font-weight='600' fill='#e6edf3'>6</text>
+<text x='420' y='158' font-size='13' font-weight='600' fill='#3fb950'>60 %</text>
+<rect x='476' y='110' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='476' y='108' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<rect x='476' y='108' width='58' height='58' rx='8' fill='#3fb950' fill-opacity='0.16' stroke='#3fb950' stroke-opacity='.75'/>
+<text x='484' y='125' font-size='14' font-weight='600' fill='#e6edf3'>7</text>
+<text x='484' y='158' font-size='13' font-weight='600' fill='#3fb950'>70 %</text>
+<rect x='540' y='110' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='540' y='108' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<rect x='540' y='108' width='58' height='58' rx='8' fill='#3fb950' fill-opacity='0.16' stroke='#3fb950' stroke-opacity='.75'/>
+<text x='548' y='125' font-size='14' font-weight='600' fill='#e6edf3'>8</text>
+<text x='548' y='158' font-size='13' font-weight='600' fill='#3fb950'>80 %</text>
+<rect x='604' y='110' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='604' y='108' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<rect x='604' y='108' width='58' height='58' rx='8' fill='#3fb950' fill-opacity='0.16' stroke='#3fb950' stroke-opacity='.75'/>
+<text x='612' y='125' font-size='14' font-weight='600' fill='#e6edf3'>9</text>
+<text x='612' y='158' font-size='13' font-weight='600' fill='#3fb950'>90 %</text>
+<rect x='668' y='110' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='668' y='108' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<rect x='668' y='108' width='58' height='58' rx='8' fill='#3fb950' fill-opacity='0.16' stroke='#3fb950' stroke-opacity='.75'/>
+<text x='676' y='125' font-size='14' font-weight='600' fill='#e6edf3'>0</text>
+<text x='676' y='158' font-size='13' font-weight='600' fill='#3fb950'>Start</text>
+<rect x='732' y='110' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='732' y='108' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<text x='740' y='125' font-size='14' font-weight='600' fill='#6e7681'>-</text>
+<rect x='796' y='110' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='796' y='108' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<text x='804' y='125' font-size='14' font-weight='600' fill='#6e7681'>=</text>
+<rect x='860' y='110' width='122' height='58' rx='8' fill='#0d1117'/>
+<rect x='860' y='108' width='122' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<rect x='860' y='108' width='122' height='58' rx='8' fill='#58a6ff' fill-opacity='0.16' stroke='#58a6ff' stroke-opacity='.75'/>
+<text x='868' y='125' font-size='11.5' font-weight='600' fill='#e6edf3'>Backspace</text>
+<text x='868' y='143' font-size='13' font-weight='600' fill='#58a6ff'>Normal</text>
+<text x='868' y='158' font-size='13' font-weight='600' fill='#58a6ff'>speed</text>
+<rect x='988' y='110' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='988' y='108' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<rect x='988' y='108' width='58' height='58' rx='8' fill='#3fb950' fill-opacity='0.16' stroke='#3fb950' stroke-opacity='.75'/>
+<text x='996' y='125' font-size='11.5' font-weight='600' fill='#e6edf3'>Home</text>
+<text x='996' y='158' font-size='13' font-weight='600' fill='#3fb950'>Start</text>
+<rect x='28' y='174' width='90' height='58' rx='8' fill='#0d1117'/>
+<rect x='28' y='172' width='90' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<text x='36' y='189' font-size='11.5' font-weight='600' fill='#6e7681'>Tab</text>
+<rect x='124' y='174' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='124' y='172' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<rect x='124' y='172' width='58' height='58' rx='8' fill='#f778ba' fill-opacity='0.16' stroke='#f778ba' stroke-opacity='.75'/>
+<text x='132' y='189' font-size='14' font-weight='600' fill='#e6edf3'>Q</text>
+<text x='132' y='207' font-size='13' font-weight='600' fill='#f778ba'>Quick</text>
+<text x='132' y='222' font-size='13' font-weight='600' fill='#f778ba'>settings</text>
+<rect x='188' y='174' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='188' y='172' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<text x='196' y='189' font-size='14' font-weight='600' fill='#6e7681'>W</text>
+<rect x='252' y='174' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='252' y='172' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<text x='260' y='189' font-size='14' font-weight='600' fill='#6e7681'>E</text>
+<rect x='316' y='174' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='316' y='172' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<text x='324' y='189' font-size='14' font-weight='600' fill='#6e7681'>R</text>
+<rect x='380' y='174' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='380' y='172' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<text x='388' y='189' font-size='14' font-weight='600' fill='#6e7681'>T</text>
+<rect x='444' y='174' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='444' y='172' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<text x='452' y='189' font-size='14' font-weight='600' fill='#6e7681'>Y</text>
+<rect x='508' y='174' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='508' y='172' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<text x='516' y='189' font-size='14' font-weight='600' fill='#6e7681'>U</text>
+<rect x='572' y='174' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='572' y='172' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<rect x='572' y='172' width='58' height='58' rx='8' fill='#f778ba' fill-opacity='0.16' stroke='#f778ba' stroke-opacity='.75'/>
+<text x='580' y='189' font-size='14' font-weight='600' fill='#e6edf3'>I</text>
+<text x='580' y='222' font-size='13' font-weight='600' fill='#f778ba'>Stats</text>
+<rect x='636' y='174' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='636' y='172' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<text x='644' y='189' font-size='14' font-weight='600' fill='#6e7681'>O</text>
+<rect x='700' y='174' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='700' y='172' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<rect x='700' y='172' width='58' height='58' rx='8' fill='#f778ba' fill-opacity='0.16' stroke='#f778ba' stroke-opacity='.75'/>
+<text x='708' y='189' font-size='14' font-weight='600' fill='#e6edf3'>P</text>
+<text x='708' y='222' font-size='13' font-weight='600' fill='#f778ba'>Playlist</text>
+<rect x='764' y='174' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='764' y='172' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<rect x='764' y='172' width='58' height='58' rx='8' fill='#58a6ff' fill-opacity='0.16' stroke='#58a6ff' stroke-opacity='.75'/>
+<text x='772' y='189' font-size='14' font-weight='600' fill='#e6edf3'>[</text>
+<text x='772' y='222' font-size='13' font-weight='600' fill='#58a6ff'>Slower</text>
+<rect x='828' y='174' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='828' y='172' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<rect x='828' y='172' width='58' height='58' rx='8' fill='#58a6ff' fill-opacity='0.16' stroke='#58a6ff' stroke-opacity='.75'/>
+<text x='836' y='189' font-size='14' font-weight='600' fill='#e6edf3'>]</text>
+<text x='836' y='222' font-size='13' font-weight='600' fill='#58a6ff'>Faster</text>
+<rect x='892' y='174' width='90' height='58' rx='8' fill='#0d1117'/>
+<rect x='892' y='172' width='90' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<text x='900' y='189' font-size='14' font-weight='600' fill='#6e7681'>\</text>
+<rect x='988' y='174' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='988' y='172' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<rect x='988' y='172' width='58' height='58' rx='8' fill='#39c5cf' fill-opacity='0.16' stroke='#39c5cf' stroke-opacity='.75'/>
+<text x='996' y='189' font-size='11.5' font-weight='600' fill='#e6edf3'>PgUp</text>
+<text x='996' y='207' font-size='13' font-weight='600' fill='#39c5cf'>Prev.</text>
+<text x='996' y='222' font-size='13' font-weight='600' fill='#39c5cf'>file</text>
+<rect x='28' y='238' width='106' height='58' rx='8' fill='#0d1117'/>
+<rect x='28' y='236' width='106' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<text x='36' y='253' font-size='11.5' font-weight='600' fill='#6e7681'>Caps</text>
+<rect x='140' y='238' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='140' y='236' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<rect x='140' y='236' width='58' height='58' rx='8' fill='#bc8cff' fill-opacity='0.16' stroke='#bc8cff' stroke-opacity='.75'/>
+<text x='148' y='253' font-size='14' font-weight='600' fill='#e6edf3'>A</text>
+<text x='148' y='271' font-size='13' font-weight='600' fill='#bc8cff'>Audio</text>
+<text x='148' y='286' font-size='13' font-weight='600' fill='#bc8cff'>track</text>
+<rect x='204' y='238' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='204' y='236' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<rect x='204' y='236' width='58' height='58' rx='8' fill='#39c5cf' fill-opacity='0.16' stroke='#39c5cf' stroke-opacity='.75'/>
+<text x='212' y='253' font-size='14' font-weight='600' fill='#e6edf3'>S</text>
+<text x='212' y='271' font-size='13' font-weight='600' fill='#39c5cf'>Screen-</text>
+<text x='212' y='286' font-size='13' font-weight='600' fill='#39c5cf'>shot</text>
+<rect x='268' y='238' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='268' y='236' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<text x='276' y='253' font-size='14' font-weight='600' fill='#6e7681'>D</text>
+<rect x='332' y='238' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='332' y='236' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<rect x='332' y='236' width='58' height='58' rx='8' fill='#f778ba' fill-opacity='0.16' stroke='#f778ba' stroke-opacity='.75'/>
+<text x='340' y='253' font-size='14' font-weight='600' fill='#e6edf3'>F</text>
+<text x='340' y='271' font-size='13' font-weight='600' fill='#f778ba'>Full</text>
+<text x='340' y='286' font-size='13' font-weight='600' fill='#f778ba'>screen</text>
+<rect x='396' y='238' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='396' y='236' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<text x='404' y='253' font-size='14' font-weight='600' fill='#6e7681'>G</text>
+<rect x='460' y='238' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='460' y='236' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<text x='468' y='253' font-size='14' font-weight='600' fill='#6e7681'>H</text>
+<rect x='524' y='238' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='524' y='236' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<rect x='524' y='236' width='58' height='58' rx='8' fill='#3fb950' fill-opacity='0.16' stroke='#3fb950' stroke-opacity='.75'/>
+<text x='532' y='253' font-size='14' font-weight='600' fill='#e6edf3'>J</text>
+<text x='532' y='286' font-size='13' font-weight='600' fill='#3fb950'>−10 s</text>
+<rect x='588' y='238' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='588' y='236' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<rect x='588' y='236' width='58' height='58' rx='8' fill='#58a6ff' fill-opacity='0.16' stroke='#58a6ff' stroke-opacity='.75'/>
+<text x='596' y='253' font-size='14' font-weight='600' fill='#e6edf3'>K</text>
+<text x='596' y='271' font-size='13' font-weight='600' fill='#58a6ff'>Play</text>
+<text x='596' y='286' font-size='13' font-weight='600' fill='#58a6ff'>pause</text>
+<rect x='652' y='238' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='652' y='236' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<rect x='652' y='236' width='58' height='58' rx='8' fill='#3fb950' fill-opacity='0.16' stroke='#3fb950' stroke-opacity='.75'/>
+<text x='660' y='253' font-size='14' font-weight='600' fill='#e6edf3'>L</text>
+<text x='660' y='286' font-size='13' font-weight='600' fill='#3fb950'>+10 s</text>
+<rect x='716' y='238' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='716' y='236' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<text x='724' y='253' font-size='14' font-weight='600' fill='#6e7681'>;</text>
+<rect x='780' y='238' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='780' y='236' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<text x='788' y='253' font-size='14' font-weight='600' fill='#6e7681'>&apos;</text>
+<rect x='844' y='238' width='138' height='58' rx='8' fill='#0d1117'/>
+<rect x='844' y='236' width='138' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<rect x='844' y='236' width='138' height='58' rx='8' fill='#f778ba' fill-opacity='0.16' stroke='#f778ba' stroke-opacity='.75'/>
+<text x='852' y='253' font-size='11.5' font-weight='600' fill='#e6edf3'>Enter</text>
+<text x='852' y='271' font-size='13' font-weight='600' fill='#f778ba'>Full</text>
+<text x='852' y='286' font-size='13' font-weight='600' fill='#f778ba'>screen</text>
+<rect x='988' y='238' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='988' y='236' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<rect x='988' y='236' width='58' height='58' rx='8' fill='#39c5cf' fill-opacity='0.16' stroke='#39c5cf' stroke-opacity='.75'/>
+<text x='996' y='253' font-size='11.5' font-weight='600' fill='#e6edf3'>PgDn</text>
+<text x='996' y='271' font-size='13' font-weight='600' fill='#39c5cf'>Next</text>
+<text x='996' y='286' font-size='13' font-weight='600' fill='#39c5cf'>file</text>
+<rect x='28' y='302' width='138' height='58' rx='8' fill='#0d1117'/>
+<rect x='28' y='300' width='138' height='58' rx='8' fill='#21262d' stroke='#8b949e'/>
+<text x='36' y='317' font-size='11.5' font-weight='600' fill='#e6edf3'>Shift</text>
+<rect x='172' y='302' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='172' y='300' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<rect x='172' y='300' width='58' height='58' rx='8' fill='#bc8cff' fill-opacity='0.16' stroke='#bc8cff' stroke-opacity='.75'/>
+<text x='180' y='317' font-size='14' font-weight='600' fill='#e6edf3'>Z</text>
+<text x='180' y='335' font-size='13' font-weight='600' fill='#bc8cff'>Subs</text>
+<text x='180' y='350' font-size='13' font-weight='600' fill='#bc8cff'>−0.1 s</text>
+<rect x='236' y='302' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='236' y='300' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<rect x='236' y='300' width='58' height='58' rx='8' fill='#bc8cff' fill-opacity='0.16' stroke='#bc8cff' stroke-opacity='.75'/>
+<text x='244' y='317' font-size='14' font-weight='600' fill='#e6edf3'>X</text>
+<text x='244' y='335' font-size='13' font-weight='600' fill='#bc8cff'>Subs</text>
+<text x='244' y='350' font-size='13' font-weight='600' fill='#bc8cff'>+0.1 s</text>
+<rect x='300' y='302' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='300' y='300' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<rect x='300' y='300' width='58' height='58' rx='8' fill='#bc8cff' fill-opacity='0.16' stroke='#bc8cff' stroke-opacity='.75'/>
+<text x='308' y='317' font-size='14' font-weight='600' fill='#e6edf3'>C</text>
+<text x='308' y='335' font-size='13' font-weight='600' fill='#bc8cff'>Subs</text>
+<text x='308' y='350' font-size='13' font-weight='600' fill='#bc8cff'>track</text>
+<rect x='364' y='302' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='364' y='300' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<rect x='364' y='300' width='58' height='58' rx='8' fill='#bc8cff' fill-opacity='0.16' stroke='#bc8cff' stroke-opacity='.75'/>
+<text x='372' y='317' font-size='14' font-weight='600' fill='#e6edf3'>V</text>
+<text x='372' y='335' font-size='13' font-weight='600' fill='#bc8cff'>Subs</text>
+<text x='372' y='350' font-size='13' font-weight='600' fill='#bc8cff'>on/off</text>
+<rect x='428' y='302' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='428' y='300' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<text x='436' y='317' font-size='14' font-weight='600' fill='#6e7681'>B</text>
+<rect x='492' y='302' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='492' y='300' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<text x='500' y='317' font-size='14' font-weight='600' fill='#6e7681'>N</text>
+<rect x='556' y='302' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='556' y='300' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<rect x='556' y='300' width='58' height='58' rx='8' fill='#f0883e' fill-opacity='0.16' stroke='#f0883e' stroke-opacity='.75'/>
+<text x='564' y='317' font-size='14' font-weight='600' fill='#e6edf3'>M</text>
+<text x='564' y='350' font-size='13' font-weight='600' fill='#f0883e'>Mute</text>
+<rect x='620' y='302' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='620' y='300' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<rect x='620' y='300' width='58' height='58' rx='8' fill='#58a6ff' fill-opacity='0.16' stroke='#58a6ff' stroke-opacity='.75'/>
+<text x='628' y='317' font-size='14' font-weight='600' fill='#e6edf3'>,</text>
+<text x='628' y='335' font-size='13' font-weight='600' fill='#58a6ff'>Frame</text>
+<text x='628' y='350' font-size='13' font-weight='600' fill='#58a6ff'>back</text>
+<rect x='684' y='302' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='684' y='300' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<rect x='684' y='300' width='58' height='58' rx='8' fill='#58a6ff' fill-opacity='0.16' stroke='#58a6ff' stroke-opacity='.75'/>
+<text x='692' y='317' font-size='14' font-weight='600' fill='#e6edf3'>.</text>
+<text x='692' y='335' font-size='13' font-weight='600' fill='#58a6ff'>Frame</text>
+<text x='692' y='350' font-size='13' font-weight='600' fill='#58a6ff'>next</text>
+<rect x='748' y='302' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='748' y='300' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<text x='756' y='317' font-size='14' font-weight='600' fill='#6e7681'>/</text>
+<rect x='812' y='302' width='106' height='58' rx='8' fill='#0d1117'/>
+<rect x='812' y='300' width='106' height='58' rx='8' fill='#21262d' stroke='#8b949e'/>
+<text x='820' y='317' font-size='11.5' font-weight='600' fill='#e6edf3'>Shift</text>
+<rect x='924' y='302' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='924' y='300' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<rect x='924' y='300' width='58' height='58' rx='8' fill='#f0883e' fill-opacity='0.16' stroke='#f0883e' stroke-opacity='.75'/>
+<text x='932' y='317' font-size='14' font-weight='600' fill='#e6edf3'>↑</text>
+<text x='932' y='335' font-size='13' font-weight='600' fill='#f0883e'>Volume</text>
+<text x='932' y='350' font-size='13' font-weight='600' fill='#f0883e'>+5</text>
+<rect x='988' y='302' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='988' y='300' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<text x='996' y='317' font-size='11.5' font-weight='600' fill='#6e7681'>End</text>
+<rect x='28' y='366' width='74' height='58' rx='8' fill='#0d1117'/>
+<rect x='28' y='364' width='74' height='58' rx='8' fill='#21262d' stroke='#8b949e'/>
+<text x='36' y='381' font-size='11.5' font-weight='600' fill='#e6edf3'>Ctrl</text>
+<rect x='108' y='366' width='74' height='58' rx='8' fill='#0d1117'/>
+<rect x='108' y='364' width='74' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<text x='116' y='381' font-size='11.5' font-weight='600' fill='#6e7681'>Win</text>
+<rect x='188' y='366' width='74' height='58' rx='8' fill='#0d1117'/>
+<rect x='188' y='364' width='74' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<text x='196' y='381' font-size='11.5' font-weight='600' fill='#6e7681'>Alt</text>
+<rect x='268' y='366' width='394' height='58' rx='8' fill='#0d1117'/>
+<rect x='268' y='364' width='394' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<rect x='268' y='364' width='394' height='58' rx='8' fill='#58a6ff' fill-opacity='0.16' stroke='#58a6ff' stroke-opacity='.75'/>
+<text x='276' y='381' font-size='11.5' font-weight='600' fill='#e6edf3'>Space</text>
+<text x='276' y='414' font-size='13' font-weight='600' fill='#58a6ff'>Play / pause</text>
+<rect x='668' y='366' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='668' y='364' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<text x='676' y='381' font-size='11.5' font-weight='600' fill='#6e7681'>Alt</text>
+<rect x='732' y='366' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='732' y='364' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<text x='740' y='381' font-size='11.5' font-weight='600' fill='#6e7681'>Fn</text>
+<rect x='796' y='366' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='796' y='364' width='58' height='58' rx='8' fill='#21262d' stroke='#8b949e'/>
+<text x='804' y='381' font-size='11.5' font-weight='600' fill='#e6edf3'>Ctrl</text>
+<rect x='860' y='366' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='860' y='364' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<rect x='860' y='364' width='58' height='58' rx='8' fill='#3fb950' fill-opacity='0.16' stroke='#3fb950' stroke-opacity='.75'/>
+<text x='868' y='381' font-size='14' font-weight='600' fill='#e6edf3'>←</text>
+<text x='868' y='414' font-size='13' font-weight='600' fill='#3fb950'>−5 s</text>
+<rect x='924' y='366' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='924' y='364' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<rect x='924' y='364' width='58' height='58' rx='8' fill='#f0883e' fill-opacity='0.16' stroke='#f0883e' stroke-opacity='.75'/>
+<text x='932' y='381' font-size='14' font-weight='600' fill='#e6edf3'>↓</text>
+<text x='932' y='399' font-size='13' font-weight='600' fill='#f0883e'>Volume</text>
+<text x='932' y='414' font-size='13' font-weight='600' fill='#f0883e'>−5</text>
+<rect x='988' y='366' width='58' height='58' rx='8' fill='#0d1117'/>
+<rect x='988' y='364' width='58' height='58' rx='8' fill='#21262d' stroke='#373e47'/>
+<rect x='988' y='364' width='58' height='58' rx='8' fill='#3fb950' fill-opacity='0.16' stroke='#3fb950' stroke-opacity='.75'/>
+<text x='996' y='381' font-size='14' font-weight='600' fill='#e6edf3'>→</text>
+<text x='996' y='414' font-size='13' font-weight='600' fill='#3fb950'>+5 s</text>
+<rect x='28' y='441' width='14' height='14' rx='4' fill='#21262d'/><rect x='28' y='441' width='14' height='14' rx='4' fill='#58a6ff' fill-opacity='0.32' stroke='#58a6ff'/>
+<text x='49' y='452' font-size='13.5' fill='#e6edf3'>Playback</text>
+<rect x='134.35' y='441' width='14' height='14' rx='4' fill='#21262d'/><rect x='134.35' y='441' width='14' height='14' rx='4' fill='#3fb950' fill-opacity='0.32' stroke='#3fb950'/>
+<text x='155.35' y='452' font-size='13.5' fill='#e6edf3'>Seek</text>
+<rect x='215.455' y='441' width='14' height='14' rx='4' fill='#21262d'/><rect x='215.455' y='441' width='14' height='14' rx='4' fill='#f0883e' fill-opacity='0.32' stroke='#f0883e'/>
+<text x='236.455' y='452' font-size='13.5' fill='#e6edf3'>Volume</text>
+<rect x='311.815' y='441' width='14' height='14' rx='4' fill='#21262d'/><rect x='311.815' y='441' width='14' height='14' rx='4' fill='#bc8cff' fill-opacity='0.32' stroke='#bc8cff'/>
+<text x='332.815' y='452' font-size='13.5' fill='#e6edf3'>Audio &amp; subtitles</text>
+<rect x='469.06' y='441' width='14' height='14' rx='4' fill='#21262d'/><rect x='469.06' y='441' width='14' height='14' rx='4' fill='#f778ba' fill-opacity='0.32' stroke='#f778ba'/>
+<text x='490.06' y='452' font-size='13.5' fill='#e6edf3'>Window &amp; panels</text>
+<rect x='622.525' y='441' width='14' height='14' rx='4' fill='#21262d'/><rect x='622.525' y='441' width='14' height='14' rx='4' fill='#39c5cf' fill-opacity='0.32' stroke='#39c5cf'/>
+<text x='643.525' y='452' font-size='13.5' fill='#e6edf3'>Files &amp; screenshots</text>
+<line x1='28' y1='474' x2='1046' y2='474' stroke='#30363d'/>
+<text x='28' y='504' font-size='12' font-weight='700' letter-spacing='.6' fill='#8b949e'>WITH CTRL</text>
+<rect x='28' y='520' width='26' height='24' rx='6' fill='#0d1117'/>
+<rect x='28' y='518' width='26' height='24' rx='6' fill='#21262d' stroke='#373e47'/>
+<text x='41' y='534.5' font-size='12.5' font-weight='600' text-anchor='middle' fill='#e6edf3'>O</text>
+<text x='132' y='534.5' font-size='14' fill='#e6edf3'>Open files</text>
+<rect x='28' y='552' width='48' height='24' rx='6' fill='#0d1117'/>
+<rect x='28' y='550' width='48' height='24' rx='6' fill='#21262d' stroke='#373e47'/>
+<text x='52' y='566.5' font-size='12.5' font-weight='600' text-anchor='middle' fill='#e6edf3'>Shift</text>
+<text x='81' y='566.5' font-size='13' fill='#8b949e'>+</text>
+<rect x='93' y='552' width='26' height='24' rx='6' fill='#0d1117'/>
+<rect x='93' y='550' width='26' height='24' rx='6' fill='#21262d' stroke='#373e47'/>
+<text x='106' y='566.5' font-size='12.5' font-weight='600' text-anchor='middle' fill='#e6edf3'>O</text>
+<text x='132' y='566.5' font-size='14' fill='#e6edf3'>Open folder</text>
+<rect x='28' y='584' width='26' height='24' rx='6' fill='#0d1117'/>
+<rect x='28' y='582' width='26' height='24' rx='6' fill='#21262d' stroke='#373e47'/>
+<text x='41' y='598.5' font-size='12.5' font-weight='600' text-anchor='middle' fill='#e6edf3'>U</text>
+<text x='132' y='598.5' font-size='14' fill='#e6edf3'>Open URL</text>
+<rect x='28' y='616' width='27' height='24' rx='6' fill='#0d1117'/>
+<rect x='28' y='614' width='27' height='24' rx='6' fill='#21262d' stroke='#373e47'/>
+<text x='41.5' y='630.5' font-size='12.5' font-weight='600' text-anchor='middle' fill='#e6edf3'>W</text>
+<text x='132' y='630.5' font-size='14' fill='#e6edf3'>Close file</text>
+<rect x='28' y='648' width='26' height='24' rx='6' fill='#0d1117'/>
+<rect x='28' y='646' width='26' height='24' rx='6' fill='#21262d' stroke='#373e47'/>
+<text x='41' y='662.5' font-size='12.5' font-weight='600' text-anchor='middle' fill='#e6edf3'>,</text>
+<text x='132' y='662.5' font-size='14' fill='#e6edf3'>Settings</text>
+<rect x='28' y='680' width='26' height='24' rx='6' fill='#0d1117'/>
+<rect x='28' y='678' width='26' height='24' rx='6' fill='#21262d' stroke='#373e47'/>
+<text x='41' y='694.5' font-size='12.5' font-weight='600' text-anchor='middle' fill='#e6edf3'>L</text>
+<text x='132' y='694.5' font-size='14' fill='#e6edf3'>Loop on/off</text>
+<rect x='28' y='712' width='28' height='24' rx='6' fill='#0d1117'/>
+<rect x='28' y='710' width='28' height='24' rx='6' fill='#21262d' stroke='#373e47'/>
+<text x='42' y='726.5' font-size='12.5' font-weight='600' text-anchor='middle' fill='#e6edf3'>←</text>
+<text x='58' y='726.5' font-size='13' fill='#8b949e'>/</text>
+<rect x='68' y='712' width='28' height='24' rx='6' fill='#0d1117'/>
+<rect x='68' y='710' width='28' height='24' rx='6' fill='#21262d' stroke='#373e47'/>
+<text x='82' y='726.5' font-size='12.5' font-weight='600' text-anchor='middle' fill='#e6edf3'>→</text>
+<text x='132' y='726.5' font-size='14' fill='#e6edf3'>Previous / next chapter</text>
+<text x='368' y='504' font-size='12' font-weight='700' letter-spacing='.6' fill='#8b949e'>WITH SHIFT</text>
+<rect x='368' y='520' width='28' height='24' rx='6' fill='#0d1117'/>
+<rect x='368' y='518' width='28' height='24' rx='6' fill='#21262d' stroke='#373e47'/>
+<text x='382' y='534.5' font-size='12.5' font-weight='600' text-anchor='middle' fill='#e6edf3'>←</text>
+<text x='398' y='534.5' font-size='13' fill='#8b949e'>/</text>
+<rect x='408' y='520' width='28' height='24' rx='6' fill='#0d1117'/>
+<rect x='408' y='518' width='28' height='24' rx='6' fill='#21262d' stroke='#373e47'/>
+<text x='422' y='534.5' font-size='12.5' font-weight='600' text-anchor='middle' fill='#e6edf3'>→</text>
+<text x='450' y='534.5' font-size='14' fill='#e6edf3'>Seek 1 s</text>
+<rect x='368' y='552' width='26' height='24' rx='6' fill='#0d1117'/>
+<rect x='368' y='550' width='26' height='24' rx='6' fill='#21262d' stroke='#373e47'/>
+<text x='381' y='566.5' font-size='12.5' font-weight='600' text-anchor='middle' fill='#e6edf3'>S</text>
+<text x='450' y='566.5' font-size='14' fill='#e6edf3'>Screenshot without subtitles</text>
+<text x='688' y='504' font-size='12' font-weight='700' letter-spacing='.6' fill='#8b949e'>MOUSE</text>
+<rect x='688' y='520' width='45' height='24' rx='12' fill='#0d1117'/>
+<rect x='688' y='518' width='45' height='24' rx='12' fill='#21262d' stroke='#373e47'/>
+<text x='710.5' y='534.5' font-size='12.5' font-weight='600' text-anchor='middle' fill='#e6edf3'>Click</text>
+<text x='828' y='534.5' font-size='14' fill='#e6edf3'>Play / pause (see Settings)</text>
+<rect x='688' y='552' width='88' height='24' rx='12' fill='#0d1117'/>
+<rect x='688' y='550' width='88' height='24' rx='12' fill='#21262d' stroke='#373e47'/>
+<text x='732' y='566.5' font-size='12.5' font-weight='600' text-anchor='middle' fill='#e6edf3'>Double-click</text>
+<text x='828' y='566.5' font-size='14' fill='#e6edf3'>Full screen</text>
+<rect x='688' y='584' width='44' height='24' rx='12' fill='#0d1117'/>
+<rect x='688' y='582' width='44' height='24' rx='12' fill='#21262d' stroke='#373e47'/>
+<text x='710' y='598.5' font-size='12.5' font-weight='600' text-anchor='middle' fill='#e6edf3'>Drag</text>
+<text x='828' y='598.5' font-size='14' fill='#e6edf3'>Move the window</text>
+<rect x='688' y='616' width='50' height='24' rx='12' fill='#0d1117'/>
+<rect x='688' y='614' width='50' height='24' rx='12' fill='#21262d' stroke='#373e47'/>
+<text x='713' y='630.5' font-size='12.5' font-weight='600' text-anchor='middle' fill='#e6edf3'>Wheel</text>
+<text x='828' y='630.5' font-size='14' fill='#e6edf3'>Volume</text>
+<rect x='688' y='648' width='48' height='24' rx='6' fill='#0d1117'/>
+<rect x='688' y='646' width='48' height='24' rx='6' fill='#21262d' stroke='#373e47'/>
+<text x='712' y='662.5' font-size='12.5' font-weight='600' text-anchor='middle' fill='#e6edf3'>Shift</text>
+<text x='741' y='662.5' font-size='13' fill='#8b949e'>+</text>
+<rect x='753' y='648' width='50' height='24' rx='12' fill='#0d1117'/>
+<rect x='753' y='646' width='50' height='24' rx='12' fill='#21262d' stroke='#373e47'/>
+<text x='778' y='662.5' font-size='12.5' font-weight='600' text-anchor='middle' fill='#e6edf3'>Wheel</text>
+<text x='828' y='662.5' font-size='14' fill='#e6edf3'>Seek 5 s</text>
+<rect x='688' y='680' width='41' height='24' rx='6' fill='#0d1117'/>
+<rect x='688' y='678' width='41' height='24' rx='6' fill='#21262d' stroke='#373e47'/>
+<text x='708.5' y='694.5' font-size='12.5' font-weight='600' text-anchor='middle' fill='#e6edf3'>Ctrl</text>
+<text x='734' y='694.5' font-size='13' fill='#8b949e'>+</text>
+<rect x='746' y='680' width='50' height='24' rx='12' fill='#0d1117'/>
+<rect x='746' y='678' width='50' height='24' rx='12' fill='#21262d' stroke='#373e47'/>
+<text x='771' y='694.5' font-size='12.5' font-weight='600' text-anchor='middle' fill='#e6edf3'>Wheel</text>
+<text x='828' y='694.5' font-size='14' fill='#e6edf3'>Speed</text>
+<rect x='688' y='712' width='81' height='24' rx='12' fill='#0d1117'/>
+<rect x='688' y='710' width='81' height='24' rx='12' fill='#21262d' stroke='#373e47'/>
+<text x='728.5' y='726.5' font-size='12.5' font-weight='600' text-anchor='middle' fill='#e6edf3'>Right-click</text>
+<text x='828' y='726.5' font-size='14' fill='#e6edf3'>Menu</text>
+</svg>

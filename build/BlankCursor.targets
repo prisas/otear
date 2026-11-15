@@ -1,0 +1,111 @@
+<Project>
+  <!--
+    Adds a blank (fully transparent) cursor resource to Otear.exe, used to hide the mouse pointer over the video.
+    WinUI's input stack owns the pointer image, so Win32 ShowCursor/SetCursor have no effect on it; the only way to
+    hide it is an InputCursor, and InputDesktopResourceCursor needs a cursor resource in a module.
+    The resource is added to the intermediate executables (JIT apphost and NativeAOT binary), so the normal copy to
+    bin/ and publish/ carries it along. It must match BlankCursorId in Controls/VideoSurface.xaml.cs.
+  -->
+  <PropertyGroup>
+    <OtearBlankCursorId>101</OtearBlankCursorId>
+  </PropertyGroup>
+
+  <UsingTask TaskName="OtearAddBlankCursor" TaskFactory="RoslynCodeTaskFactory"
+             AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll">
+    <ParameterGroup>
+      <File ParameterType="System.String" Required="true" />
+      <ResourceId ParameterType="System.Int32" Required="true" />
+    </ParameterGroup>
+    <Task>
+      <Code Type="Class" Language="cs"><![CDATA[
+using System;
+using System.IO;
+using System.Runtime.InteropServices;
+using Microsoft.Build.Framework;
+using Microsoft.Build.Utilities;
+
+public class OtearAddBlankCursor : Task
+{
+    [Required] public string File { get; set; }
+    [Required] public int ResourceId { get; set; }
+
+    const int RT_CURSOR = 1, RT_GROUP_CURSOR = 12;
+
+    [DllImport("kernel32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
+    static extern IntPtr LoadLibraryEx(string file, IntPtr reserved, uint flags);
+    [DllImport("kernel32.dll")]
+    static extern bool FreeLibrary(IntPtr module);
+    [DllImport("kernel32.dll")]
+    static extern IntPtr FindResource(IntPtr module, IntPtr name, IntPtr type);
+    [DllImport("kernel32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
+    static extern IntPtr BeginUpdateResource(string file, bool deleteExisting);
+    [DllImport("kernel32.dll", SetLastError = true)]
+    static extern bool UpdateResource(IntPtr update, IntPtr type, IntPtr name, ushort language, byte[] data, int size);
+    [DllImport("kernel32.dll", SetLastError = true)]
+    static extern bool EndUpdateResource(IntPtr update, bool discard);
+
+    public override bool Execute()
+    {
+        if (!System.IO.File.Exists(File)) { Log.LogError("OtearAddBlankCursor: " + File + " not found"); return false; }
+        if (HasCursor()) return true;
+
+        // RT_CURSOR: hotspot, then a 32x32 1-bpp DIB whose height is doubled for the XOR and AND masks.
+        // XOR all 0 + AND all 1 = every pixel transparent.
+        var cursorStream = new MemoryStream();
+        var c = new BinaryWriter(cursorStream);
+        c.Write((ushort)0); c.Write((ushort)0);
+        c.Write(40); c.Write(32); c.Write(64); c.Write((ushort)1); c.Write((ushort)1);
+        c.Write(0); c.Write(0); c.Write(0); c.Write(0); c.Write(0); c.Write(0);
+        c.Write(0); c.Write(0x00FFFFFF);
+        c.Write(new byte[128]);
+        for (int i = 0; i < 128; i++) c.Write((byte)0xFF);
+        c.Flush();
+        byte[] cursor = cursorStream.ToArray();
+
+        // RT_GROUP_CURSOR: NEWHEADER (type 2 = cursor, 1 image) + one CURSORDIR entry pointing at the image.
+        var groupStream = new MemoryStream();
+        var g = new BinaryWriter(groupStream);
+        g.Write((ushort)0); g.Write((ushort)2); g.Write((ushort)1);
+        g.Write((ushort)32); g.Write((ushort)64); g.Write((ushort)1); g.Write((ushort)1);
+        g.Write(cursor.Length); g.Write((ushort)ResourceId);
+        g.Flush();
+        byte[] group = groupStream.ToArray();
+
+        IntPtr update = BeginUpdateResource(File, false);
+        if (update == IntPtr.Zero) { Log.LogError("OtearAddBlankCursor: cannot open " + File + " (error " + Marshal.GetLastWin32Error() + ")"); return false; }
+        bool ok = UpdateResource(update, (IntPtr)RT_CURSOR, (IntPtr)ResourceId, 0, cursor, cursor.Length)
+               && UpdateResource(update, (IntPtr)RT_GROUP_CURSOR, (IntPtr)ResourceId, 0, group, group.Length);
+        int error = Marshal.GetLastWin32Error();
+        if (!EndUpdateResource(update, !ok) || !ok)
+        {
+            Log.LogError("OtearAddBlankCursor: adding the cursor to " + File + " failed (error " + (ok ? Marshal.GetLastWin32Error() : error) + ")");
+            return false;
+        }
+        Log.LogMessage(MessageImportance.Normal, "Added blank cursor " + ResourceId + " to " + File);
+        return true;
+    }
+
+    bool HasCursor()
+    {
+        IntPtr module = LoadLibraryEx(File, IntPtr.Zero, 0x2 | 0x20); // AS_DATAFILE | AS_IMAGE_RESOURCE
+        if (module == IntPtr.Zero) return false;
+        try { return FindResource(module, (IntPtr)ResourceId, (IntPtr)RT_GROUP_CURSOR) != IntPtr.Zero; }
+        finally { FreeLibrary(module); }
+    }
+}
+]]></Code>
+    </Task>
+  </UsingTask>
+
+  <!-- JIT builds: the apphost (copied to bin\ as Otear.exe). -->
+  <Target Name="OtearBlankCursorAppHost" AfterTargets="_CreateAppHost"
+          Condition="'$(AppHostIntermediatePath)' != '' And Exists('$(AppHostIntermediatePath)')">
+    <OtearAddBlankCursor File="$(AppHostIntermediatePath)" ResourceId="$(OtearBlankCursorId)" />
+  </Target>
+
+  <!-- NativeAOT publish: the linked binary (copied to the publish folder). -->
+  <Target Name="OtearBlankCursorNative" AfterTargets="LinkNative"
+          Condition="'$(NativeBinary)' != '' And Exists('$(NativeBinary)')">
+    <OtearAddBlankCursor File="$(NativeBinary)" ResourceId="$(OtearBlankCursorId)" />
+  </Target>
+</Project>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window
+    x:Class="Otear.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:Otear.Controls"
+    xmlns:views="using:Otear.Views"
+    Title="Otear">
+
+    <Grid x:Name="Root" AllowDrop="True" DragOver="OnDragOver" Drop="OnDrop" PreviewKeyDown="OnPreviewKeyDown"
+          ActualThemeChanged="OnActualThemeChanged">
+        <controls:VideoSurface x:Name="Video" />
+        <views:PlayerView x:Name="Player" Visibility="Collapsed" />
+        <views:WelcomeView x:Name="Welcome" />
+
+        <!-- Custom title bar: drag region over both the welcome screen and the video -->
+        <Grid x:Name="TitleBarArea" Height="48" VerticalAlignment="Top" Background="Transparent">
+            <StackPanel x:Name="TitleBarContent" Orientation="Horizontal" Spacing="10" Margin="16,0,0,0" VerticalAlignment="Center">
+                <Image x:Name="TitleBarIcon" Width="18" Height="18" />
+                <TextBlock Text="Otear" Style="{StaticResource CaptionTextBlockStyle}" VerticalAlignment="Center" />
+            </StackPanel>
+        </Grid>
+
+        <!-- Drop hint -->
+        <Border x:Name="DropHint" Visibility="Collapsed" IsHitTestVisible="False" Margin="12"
+                CornerRadius="12" BorderThickness="2" BorderBrush="{ThemeResource AccentFillColorDefaultBrush}"
+                Background="{ThemeResource SmokeFillColorDefaultBrush}">
+            <TextBlock x:Name="DropHintText" HorizontalAlignment="Center" VerticalAlignment="Center"
+                       Style="{StaticResource SubtitleTextBlockStyle}" Foreground="White" />
+        </Border>
+    </Grid>
+</Window>

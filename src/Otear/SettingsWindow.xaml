@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window
+    x:Class="Otear.SettingsWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:tk="using:CommunityToolkit.WinUI.Controls"
+    xmlns:local="using:Otear"
+    Title="Otear Settings">
+
+    <Grid x:Name="Root">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="48" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid x:Name="TitleBarArea" Background="Transparent">
+            <StackPanel Orientation="Horizontal" Spacing="10" Margin="16,0,0,0" VerticalAlignment="Center">
+                <Image x:Name="TitleIcon" Width="18" Height="18" />
+                <TextBlock Text="Settings" Style="{StaticResource CaptionTextBlockStyle}" VerticalAlignment="Center" />
+            </StackPanel>
+        </Grid>
+
+        <NavigationView x:Name="Nav" Grid.Row="1" PaneDisplayMode="Left" IsBackButtonVisible="Collapsed"
+                        IsSettingsVisible="False" OpenPaneLength="220" SelectionChanged="OnNavSelectionChanged">
+
+            <ScrollViewer x:Name="Scroller" Padding="32,8,32,32">
+                <StackPanel MaxWidth="860" Spacing="4" HorizontalAlignment="Stretch">
+                    <TextBlock x:Name="PageTitle" Style="{StaticResource TitleTextBlockStyle}" Margin="0,8,0,16" />
+
+                    <!-- GENERAL -->
+                    <StackPanel x:Name="GeneralPage" Spacing="4">
+                        <tk:SettingsCard Header="App theme" Description="Light, dark, or follow Windows.">
+                            <tk:SettingsCard.HeaderIcon><FontIcon Glyph="&#xE790;" /></tk:SettingsCard.HeaderIcon>
+                            <ComboBox x:Name="ThemeBox" MinWidth="180" SelectionChanged="OnThemeChanged">
+                                <x:String>Use system setting</x:String>
+                                <x:String>Light</x:String>
+                                <x:String>Dark</x:String>
+                            </ComboBox>
+                        </tk:SettingsCard>
+                        <tk:SettingsCard Header="Control bar" Description="A floating bar over the video, or a full-width bar at the bottom.">
+                            <tk:SettingsCard.HeaderIcon><FontIcon Glyph="&#xE8A1;" /></tk:SettingsCard.HeaderIcon>
+                            <ComboBox x:Name="BarStyleBox" MinWidth="180" SelectionChanged="OnBarStyleChanged">
+                                <x:String>Floating</x:String>
+                                <x:String>Bottom bar</x:String>
+                            </ComboBox>
+                        </tk:SettingsCard>
+                        <tk:SettingsCard x:Name="BarPositionCard" Header="Control bar position"
+                                         Description="Drag the floating bar by its handle or any empty part to move it anywhere in the window. Double-click the handle to put it back.">
+                            <tk:SettingsCard.HeaderIcon><FontIcon Glyph="&#xE7C2;" /></tk:SettingsCard.HeaderIcon>
+                            <Button x:Name="ResetBarPositionButton" Content="Reset position" Click="OnResetBarPosition" />
+                        </tk:SettingsCard>
+                        <tk:SettingsCard Header="Hide controls after" Description="Seconds without mouse movement before the controls and the mouse pointer hide.">
+                            <tk:SettingsCard.HeaderIcon><FontIcon Glyph="&#xE916;" /></tk:SettingsCard.HeaderIcon>
+                            <NumberBox x:Name="AutoHideBox" Minimum="1" Maximum="30" SmallChange="0.5" SpinButtonPlacementMode="Inline" MinWidth="140" ValueChanged="OnAutoHideChanged" />
+                        </tk:SettingsCard>
+                        <tk:SettingsCard Header="Clicking the video" Description="Double-click always toggles full screen.">
+                            <tk:SettingsCard.HeaderIcon><FontIcon Glyph="&#xE962;" /></tk:SettingsCard.HeaderIcon>
+                            <ComboBox x:Name="ClickBox" MinWidth="180" SelectionChanged="OnClickActionChanged">
+                                <x:String>Play / pause</x:String>
+                                <x:String>Show / hide controls</x:String>
+                                <x:String>Do nothing</x:String>
+                            </ComboBox>
+                        </tk:SettingsCard>
+                        <tk:SettingsCard Header="Resume playback" Description="Continue where you left off when reopening a file.">
+                            <tk:SettingsCard.HeaderIcon><FontIcon Glyph="&#xE81C;" /></tk:SettingsCard.HeaderIcon>
+                            <ToggleSwitch x:Name="ResumeSwitch" Toggled="OnResumeToggled" />
+                        </tk:SettingsCard>
+                        <tk:SettingsCard Header="Resize window to fit video" Description="When a file opens, size the window to the video (up to 85 % of the screen).">
+                            <tk:SettingsCard.HeaderIcon><FontIcon Glyph="&#xE740;" /></tk:SettingsCard.HeaderIcon>
+                            <ToggleSwitch x:Name="AutoFitSwitch" Toggled="OnAutoFitToggled" />
+                        </tk:SettingsCard>
+                        <tk:SettingsCard Header="Keep aspect ratio while resizing" Description="The window follows the video's shape, so there are no black bars.">
+                            <tk:SettingsCard.HeaderIcon><FontIcon Glyph="&#xE799;" /></tk:SettingsCard.HeaderIcon>
+                            <ToggleSwitch x:Name="AspectSwitch" Toggled="OnAspectToggled" />
+                        </tk:SettingsCard>
+                        <tk:SettingsCard Header="Default media player" Description="Choose Otear for video and audio files in Windows Settings › Default apps (requires the installer)."
+                                         IsClickEnabled="True" Click="OnOpenDefaultApps">
+                            <tk:SettingsCard.HeaderIcon><FontIcon Glyph="&#xE7AC;" /></tk:SettingsCard.HeaderIcon>
+                            <tk:SettingsCard.ActionIcon><FontIcon Glyph="&#xE8A7;" /></tk:SettingsCard.ActionIcon>
+                        </tk:SettingsCard>
+                    </StackPanel>
+
+                    <!-- VIDEO -->
+                    <StackPanel x:Name="VideoPage" Spacing="4" Visibility="Collapsed">
+                        <tk:SettingsCard Header="HDR output" x:Name="HdrCard">
+                            <tk:SettingsCard.HeaderIcon><FontIcon Glyph="&#xE706;" /></tk:SettingsCard.HeaderIcon>
+                            <ComboBox x:Name="HdrBox" MinWidth="220" SelectionChanged="OnHdrChanged">
+                                <x:String>Automatic (HDR when Windows HDR is on)</x:String>
+                                <x:String>Always SDR (tone-map)</x:String>
+                            </ComboBox>
+                        </tk:SettingsCard>
+                        <tk:SettingsCard Header="HDR peak detection" Description="Measures each frame's brightness to tone-map HDR better. It costs a lot of GPU and CPU time, so Automatic uses it only when the video is brighter than your display can show.">
+                            <tk:SettingsCard.HeaderIcon><FontIcon Glyph="&#xE9D9;" /></tk:SettingsCard.HeaderIcon>
+                            <ComboBox x:Name="PeakBox" MinWidth="220" SelectionChanged="OnPeakChanged">
+                                <x:String>Automatic</x:String>
+                                <x:String>Always (best tone mapping)</x:String>
+                                <x:String>Off (fastest)</x:String>
+                            </ComboBox>
+                        </tk:SettingsCard>
+                        <tk:SettingsCard Header="Hardware decoding" Description="Decode with the GPU (D3D11VA). Turn off only if you see glitches.">
+                            <tk:SettingsCard.HeaderIcon><FontIcon Glyph="&#xE950;" /></tk:SettingsCard.HeaderIcon>
+                            <ToggleSwitch x:Name="HwdecSwitch" Toggled="OnHwdecToggled" />
+                        </tk:SettingsCard>
+                        <tk:SettingsCard Header="Rendering quality" Description="High quality: sharper scaling (needs a strong GPU). Power saving: simpler scaling and no HDR peak detection, about a quarter of the GPU work, for laptops on battery or older graphics. Applies next time Otear starts.">
+                            <tk:SettingsCard.HeaderIcon><FontIcon Glyph="&#xE7B3;" /></tk:SettingsCard.HeaderIcon>
+                            <ComboBox x:Name="QualityBox" MinWidth="180" SelectionChanged="OnQualityChanged">
+                                <x:String>Balanced</x:String>
+                                <x:String>High quality</x:String>
+                                <x:String>Power saving</x:String>
+                            </ComboBox>
+                        </tk:SettingsCard>
+                        <tk:SettingsCard Header="Debanding" Description="Smooths colour banding in gradients.">
+                            <tk:SettingsCard.HeaderIcon><FontIcon Glyph="&#xE91B;" /></tk:SettingsCard.HeaderIcon>
+                            <ToggleSwitch x:Name="DebandSwitch" Toggled="OnDebandToggled" />
+                        </tk:SettingsCard>
+                        <tk:SettingsCard Header="Smooth motion" Description="Resamples video to the display's refresh rate to remove judder. Applies next time Otear starts.">
+                            <tk:SettingsCard.HeaderIcon><FontIcon Glyph="&#xE9D9;" /></tk:SettingsCard.HeaderIcon>
+                            <ToggleSwitch x:Name="SmoothSwitch" Toggled="OnSmoothToggled" />
+                        </tk:SettingsCard>
+                        <tk:SettingsCard Header="Seek bar thumbnails" Description="Show preview frames when hovering over the seek bar (local files).">
+                            <tk:SettingsCard.HeaderIcon><FontIcon Glyph="&#xE91B;" /></tk:SettingsCard.HeaderIcon>
+                            <ToggleSwitch x:Name="ThumbsSwitch" Toggled="OnThumbsToggled" />
+                        </tk:SettingsCard>
+                    </StackPanel>
+
+                    <!-- AUDIO -->
+                    <StackPanel x:Name="AudioPage" Spacing="4" Visibility="Collapsed">
+                        <tk:SettingsCard Header="Output device">
+                            <tk:SettingsCard.HeaderIcon><FontIcon Glyph="&#xE7F5;" /></tk:SettingsCard.HeaderIcon>
+                            <ComboBox x:Name="DeviceBox" MinWidth="260" MaxWidth="360" SelectionChanged="OnDeviceChanged" />
+                        </tk:SettingsCard>
+                        <tk:SettingsCard Header="Exclusive mode" Description="Bypass the Windows mixer (WASAPI exclusive). Other apps can't play sound meanwhile.">
+                            <tk:SettingsCard.HeaderIcon><FontIcon Glyph="&#xE995;" /></tk:SettingsCard.HeaderIcon>
+                            <ToggleSwitch x:Name="ExclusiveSwitch" Toggled="OnExclusiveToggled" />
+                        </tk:SettingsCard>
+                        <tk:SettingsCard Header="Pass through surround to receiver" Description="Send Dolby / DTS bitstreams unchanged over HDMI or S/PDIF.">
+                            <tk:SettingsCard.HeaderIcon><FontIcon Glyph="&#xE8F1;" /></tk:SettingsCard.HeaderIcon>
+                            <ToggleSwitch x:Name="PassthroughSwitch" Toggled="OnPassthroughToggled" />
+                        </tk:SettingsCard>
+                        <tk:SettingsCard Header="Maximum volume" Description="Allow boosting quiet files above 100 %.">
+                            <tk:SettingsCard.HeaderIcon><FontIcon Glyph="&#xE767;" /></tk:SettingsCard.HeaderIcon>
+                            <ComboBox x:Name="VolumeMaxBox" MinWidth="140" SelectionChanged="OnVolumeMaxChanged">
+                                <x:String>100 %</x:String>
+                                <x:String>130 %</x:String>
+                                <x:String>150 %</x:String>
+                                <x:String>200 %</x:String>
+                            </ComboBox>
+                        </tk:SettingsCard>
+                        <tk:SettingsCard Header="Preferred audio languages" Description="Comma-separated language codes, in order, e.g. jpn,eng.">
+                            <tk:SettingsCard.HeaderIcon><FontIcon Glyph="&#xF2B7;" /></tk:SettingsCard.HeaderIcon>
+                            <TextBox x:Name="AudioLangBox" MinWidth="200" PlaceholderText="e.g. eng,en" LostFocus="OnAudioLangChanged" />
+                        </tk:SettingsCard>
+                    </StackPanel>
+
+                    <!-- SUBTITLES -->
+                    <StackPanel x:Name="SubtitlePage" Spacing="4" Visibility="Collapsed">
+                        <tk:SettingsCard Header="Preferred subtitle languages" Description="Comma-separated language codes, in order, e.g. eng,spa.">
+                            <tk:SettingsCard.HeaderIcon><FontIcon Glyph="&#xF2B7;" /></tk:SettingsCard.HeaderIcon>
+                            <TextBox x:Name="SubLangBox" MinWidth="200" PlaceholderText="e.g. eng,en" LostFocus="OnSubLangChanged" />
+                        </tk:SettingsCard>
+                        <tk:SettingsCard Header="Load subtitle files automatically" Description="Look for subtitle files next to the video.">
+                            <tk:SettingsCard.HeaderIcon><FontIcon Glyph="&#xED1E;" /></tk:SettingsCard.HeaderIcon>
+                            <ComboBox x:Name="SubAutoBox" MinWidth="220" SelectionChanged="OnSubAutoChanged">
+                                <x:String>Exact file name only</x:String>
+                                <x:String>Similar file names</x:String>
+                                <x:String>All in the folder</x:String>
+                                <x:String>Never</x:String>
+                            </ComboBox>
+                        </tk:SettingsCard>
+                        <tk:SettingsExpander Header="Subtitle style" Description="Used for plain subtitles (SRT, VTT…). Styled ASS subtitles keep their own look." IsExpanded="True">
+                            <tk:SettingsExpander.HeaderIcon><FontIcon Glyph="&#xE8D2;" /></tk:SettingsExpander.HeaderIcon>
+                            <tk:SettingsExpander.Items>
+                                <tk:SettingsCard Header="Font" Description="Any font installed in Windows. Type to jump to a name.">
+                                    <ComboBox x:Name="SubFontBox" MinWidth="240" MaxWidth="320" MaxDropDownHeight="440"
+                                              PlaceholderText="Loading fonts…" SelectionChanged="OnSubFontChanged">
+                                        <ComboBox.ItemTemplate>
+                                            <DataTemplate x:DataType="local:FontChoice">
+                                                <TextBlock Text="{x:Bind Display}" FontFamily="{x:Bind Preview}" TextTrimming="CharacterEllipsis" />
+                                            </DataTemplate>
+                                        </ComboBox.ItemTemplate>
+                                    </ComboBox>
+                                </tk:SettingsCard>
+                                <tk:SettingsCard Header="Size">
+                                    <NumberBox x:Name="SubSizeBox" Minimum="12" Maximum="120" SmallChange="2" SpinButtonPlacementMode="Inline" MinWidth="140" ValueChanged="OnSubSizeChanged" />
+                                </tk:SettingsCard>
+                                <tk:SettingsCard Header="Text colour">
+                                    <ComboBox x:Name="SubColorBox" MinWidth="160" SelectionChanged="OnSubColorChanged">
+                                        <x:String>White</x:String>
+                                        <x:String>Yellow</x:String>
+                                        <x:String>Light grey</x:String>
+                                    </ComboBox>
+                                </tk:SettingsCard>
+                                <tk:SettingsCard Header="Outline">
+                                    <Slider x:Name="SubBorderSlider" Minimum="0" Maximum="8" StepFrequency="0.5" Width="200" ValueChanged="OnSubBorderChanged" />
+                                </tk:SettingsCard>
+                                <tk:SettingsCard Header="Position" Description="Move subtitles higher or lower on the picture.">
+                                    <StackPanel Width="240">
+                                        <!-- Reversed: mpv's sub-pos is 100 at the bottom, so dragging right raises the subtitles. -->
+                                        <Slider x:Name="SubPosSlider" Minimum="0" Maximum="100" StepFrequency="1" SmallChange="1" LargeChange="5"
+                                                IsDirectionReversed="True" IsThumbToolTipEnabled="False" ValueChanged="OnSubPosChanged"
+                                                AutomationProperties.Name="Subtitle position" />
+                                        <Grid Margin="0,-4,0,0">
+                                            <TextBlock Text="Bottom" Style="{StaticResource CaptionTextBlockStyle}" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                                            <TextBlock x:Name="SubPosText" HorizontalAlignment="Center" Style="{StaticResource CaptionTextBlockStyle}" />
+                                            <TextBlock Text="Top" HorizontalAlignment="Right" Style="{StaticResource CaptionTextBlockStyle}" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                                        </Grid>
+                                    </StackPanel>
+                                </tk:SettingsCard>
+                            </tk:SettingsExpander.Items>
+                        </tk:SettingsExpander>
+                    </StackPanel>
+
+                    <!-- SHORTCUTS -->
+                    <StackPanel x:Name="ShortcutsPage" Spacing="4" Visibility="Collapsed">
+                        <Border Padding="16" CornerRadius="8" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1">
+                            <Grid x:Name="ShortcutGrid" ColumnSpacing="24" RowSpacing="8" />
+                        </Border>
+                        <TextBlock Margin="0,8,0,0" Foreground="{ThemeResource TextFillColorSecondaryBrush}" TextWrapping="Wrap"
+                                   Text="Mouse: click to play/pause, double-click for full screen, wheel for volume, Shift+wheel to seek, Ctrl+wheel for speed, drag to move the window, right-click for the menu." />
+                    </StackPanel>
+
+                    <!-- ADVANCED -->
+                    <StackPanel x:Name="AdvancedPage" Spacing="4" Visibility="Collapsed">
+                        <tk:SettingsCard Header="Use mpv configuration folder" Description="Read mpv.conf, input.conf and scripts from your Otear mpv folder. Applies next time Otear starts.">
+                            <tk:SettingsCard.HeaderIcon><FontIcon Glyph="&#xE8B7;" /></tk:SettingsCard.HeaderIcon>
+                            <StackPanel Orientation="Horizontal" Spacing="8">
+                                <Button Content="Open folder" Click="OnOpenMpvFolder" />
+                                <ToggleSwitch x:Name="MpvConfigSwitch" Toggled="OnMpvConfigToggled" />
+                            </StackPanel>
+                        </tk:SettingsCard>
+                        <tk:SettingsExpander Header="Extra mpv options" Description="One name=value per line, as in mpv.conf. Applies next time Otear starts; invalid options are ignored." IsExpanded="False">
+                            <tk:SettingsExpander.HeaderIcon><FontIcon Glyph="&#xE943;" /></tk:SettingsExpander.HeaderIcon>
+                            <tk:SettingsExpander.Items>
+                                <tk:SettingsCard ContentAlignment="Vertical" HorizontalContentAlignment="Stretch">
+                                    <TextBox x:Name="ExtraOptionsBox" AcceptsReturn="True" TextWrapping="NoWrap" MinHeight="120" FontFamily="Consolas"
+                                             PlaceholderText="# e.g.&#x0a;scale=ewa_lanczossharp&#x0a;sub-scale=1.1" LostFocus="OnExtraOptionsChanged" />
+                                </tk:SettingsCard>
+                            </tk:SettingsExpander.Items>
+                        </tk:SettingsExpander>
+                        <tk:SettingsCard Header="Debug logging" Description="Write a detailed mpv log (mpv.log) next to the app log. Applies next time Otear starts.">
+                            <tk:SettingsCard.HeaderIcon><FontIcon Glyph="&#xEBE8;" /></tk:SettingsCard.HeaderIcon>
+                            <StackPanel Orientation="Horizontal" Spacing="8">
+                                <Button Content="Open logs" Click="OnOpenLogs" />
+                                <ToggleSwitch x:Name="DebugSwitch" Toggled="OnDebugToggled" />
+                            </StackPanel>
+                        </tk:SettingsCard>
+                    </StackPanel>
+
+                    <!-- ABOUT -->
+                    <StackPanel x:Name="AboutPage" Spacing="12" Visibility="Collapsed">
+                        <StackPanel Orientation="Horizontal" Spacing="16">
+                            <Image x:Name="AboutLogo" Width="64" Height="64" />
+                            <StackPanel VerticalAlignment="Center">
+                                <TextBlock Text="Otear" Style="{StaticResource SubtitleTextBlockStyle}" />
+                                <TextBlock x:Name="AppVersionText" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                            </StackPanel>
+                        </StackPanel>
+                        <TextBlock x:Name="EngineText" IsTextSelectionEnabled="True" TextWrapping="Wrap" FontFamily="Consolas" FontSize="12"
+                                   Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                        <TextBlock TextWrapping="Wrap" Foreground="{ThemeResource TextFillColorSecondaryBrush}">
+                            Otear is a media player for Windows inspired by IINA, built on mpv (libmpv), FFmpeg and libplacebo.
+                            It is free software, licensed under the GNU General Public License version 3 or later; it comes with ABSOLUTELY NO WARRANTY.
+                        </TextBlock>
+                        <StackPanel Orientation="Horizontal" Spacing="8">
+                            <HyperlinkButton Content="mpv" NavigateUri="https://mpv.io" />
+                            <HyperlinkButton Content="IINA" NavigateUri="https://iina.io" />
+                            <HyperlinkButton Content="GNU GPL v3" NavigateUri="https://www.gnu.org/licenses/gpl-3.0.html" />
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </ScrollViewer>
+        </NavigationView>
+    </Grid>
+</Window>

@@ -1,0 +1,18 @@
+<Project>
+  <!-- Copies the right libmpv-2.dll (fetched by tools/Get-LibMpv.ps1) next to the app / test binaries. -->
+  <PropertyGroup>
+    <_MpvRid Condition="'$(RuntimeIdentifier)' != ''">$(RuntimeIdentifier)</_MpvRid>
+    <_MpvRid Condition="'$(_MpvRid)' == '' And '$(Platform)' == 'ARM64'">win-arm64</_MpvRid>
+    <_MpvRid Condition="'$(_MpvRid)' == ''">win-x64</_MpvRid>
+    <_MpvDll>$(MpvRoot)$(_MpvRid)\libmpv-2.dll</_MpvDll>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="$(_MpvDll)" Link="libmpv-2.dll" Visible="false"
+          CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <Target Name="OtearCheckLibMpv" BeforeTargets="BeforeBuild" Condition="!Exists('$(_MpvDll)')">
+    <Error Text="libmpv-2.dll for $(_MpvRid) was not found at $(_MpvDll). Run: pwsh tools/Get-LibMpv.ps1 -Rid $(_MpvRid)" />
+  </Target>
+</Project>

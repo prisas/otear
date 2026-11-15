@@ -1,0 +1,22 @@
+<Project>
+  <PropertyGroup>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Deterministic>true</Deterministic>
+    <EnforceCodeStyleInBuild>false</EnforceCodeStyleInBuild>
+
+    <!-- WinUI and libmpv are architecture specific: default to x64 when nothing is given. -->
+    <Platform Condition="'$(Platform)' == '' Or '$(Platform)' == 'AnyCPU'">x64</Platform>
+
+    <Version>0.1.3</Version>
+    <Product>Otear</Product>
+    <Company>Otear contributors</Company>
+    <Authors>Otear contributors</Authors>
+    <Copyright>Copyright © 2026 Otear contributors. Licensed under GPL-3.0-or-later.</Copyright>
+
+    <OtearRoot>$(MSBuildThisFileDirectory)</OtearRoot>
+    <MpvRoot>$(MSBuildThisFileDirectory)lib\mpv\</MpvRoot>
+  </PropertyGroup>
+</Project>

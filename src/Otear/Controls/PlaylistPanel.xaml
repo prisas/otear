@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UserControl
+    x:Class="Otear.Controls.PlaylistPanel"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Otear.Controls"
+    IsTabStop="False">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid Padding="8,6,6,0">
+            <SelectorBar x:Name="Tabs" SelectionChanged="OnTabChanged">
+                <SelectorBarItem x:Name="PlaylistTab" Text="Playlist" IsSelected="True" />
+                <SelectorBarItem x:Name="ChaptersTab" Text="Chapters" />
+            </SelectorBar>
+            <Button HorizontalAlignment="Right" VerticalAlignment="Center" Click="OnClose" Width="32" Height="32" Padding="0"
+                    Background="Transparent" BorderThickness="0" ToolTipService.ToolTip="Close" AutomationProperties.Name="Close">
+                <FontIcon Glyph="&#xE711;" FontSize="12" />
+            </Button>
+        </Grid>
+
+        <ListView x:Name="PlaylistList" Grid.Row="1" Margin="4,4,4,0" SelectionMode="None" IsItemClickEnabled="True"
+                  ItemClick="OnPlaylistItemClick" CanDragItems="True" CanReorderItems="True" AllowDrop="True"
+                  DragItemsStarting="OnDragItemsStarting" DragItemsCompleted="OnDragItemsCompleted">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="local:PlaylistRow">
+                    <Grid ColumnSpacing="10" Padding="0,6">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="24" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <FontIcon Glyph="&#xF5B0;" FontSize="12" Visibility="{x:Bind CurrentVisibility, Mode=OneWay}"
+                                  Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}" />
+                        <TextBlock Grid.Column="0" Text="{x:Bind Number}" Visibility="{x:Bind NumberVisibility, Mode=OneWay}" FontSize="12"
+                                   HorizontalAlignment="Center" VerticalAlignment="Center"
+                                   Foreground="{ThemeResource TextFillColorTertiaryBrush}" />
+                        <TextBlock Grid.Column="1" Text="{x:Bind Name}" FontWeight="{x:Bind Weight, Mode=OneWay}" TextTrimming="CharacterEllipsis"
+                                   VerticalAlignment="Center" ToolTipService.ToolTip="{x:Bind Path}" />
+                        <Button Grid.Column="2" Tag="{x:Bind Index}" Click="OnRemoveItem" Width="28" Height="28" Padding="0"
+                                Background="Transparent" BorderThickness="0" ToolTipService.ToolTip="Remove from playlist">
+                            <FontIcon Glyph="&#xE711;" FontSize="10" />
+                        </Button>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <ListView x:Name="ChapterList" Grid.Row="1" Margin="4,4,4,0" SelectionMode="None" IsItemClickEnabled="True"
+                  ItemClick="OnChapterItemClick" Visibility="Collapsed">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="local:ChapterRow">
+                    <Grid ColumnSpacing="10" Padding="0,6">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{x:Bind Title}" FontWeight="{x:Bind Weight, Mode=OneWay}" TextTrimming="CharacterEllipsis" VerticalAlignment="Center" />
+                        <TextBlock Grid.Column="1" Text="{x:Bind TimeText}" FontSize="12" VerticalAlignment="Center"
+                                   Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <TextBlock x:Name="EmptyText" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed"
+                   Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+
+        <StackPanel x:Name="PlaylistActions" Grid.Row="2" Orientation="Horizontal" Spacing="8" Padding="12,8,12,12">
+            <Button Click="OnAddFiles">
+                <StackPanel Orientation="Horizontal" Spacing="6">
+                    <FontIcon Glyph="&#xE710;" FontSize="14" />
+                    <TextBlock Text="Add files" />
+                </StackPanel>
+            </Button>
+            <Button Click="OnClearPlaylist" Content="Clear others" ToolTipService.ToolTip="Remove everything except the current file" />
+        </StackPanel>
+    </Grid>
+</UserControl>

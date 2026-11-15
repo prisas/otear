@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UserControl
+    x:Class="Otear.Views.PlayerView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:Otear.Controls"
+    IsTabStop="True" UseSystemFocusVisuals="False" TabFocusNavigation="Cycle">
+
+    <Grid x:Name="Root" PointerMoved="OnRootPointerMoved" SizeChanged="OnRootSizeChanged">
+
+        <!-- Audio-only placeholder (files without any video / cover art) -->
+        <Grid x:Name="AudioCard" Visibility="Collapsed" Background="{ThemeResource AudioCardBackgroundBrush}">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="10" Margin="24,24,24,140">
+                <Border Width="140" Height="140" CornerRadius="20" HorizontalAlignment="Center"
+                        Background="{ThemeResource AccentFillColorDefaultBrush}">
+                    <FontIcon Glyph="&#xEC4F;" FontSize="64" Foreground="White" />
+                </Border>
+                <TextBlock x:Name="AudioTitle" HorizontalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap"
+                           Style="{StaticResource SubtitleTextBlockStyle}" Foreground="White" MaxWidth="560" />
+                <TextBlock x:Name="AudioArtist" HorizontalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap"
+                           Foreground="#B3FFFFFF" MaxWidth="560" />
+            </StackPanel>
+        </Grid>
+
+        <!-- Mouse input on the video comes from the VideoSurface underneath (see AttachInputSource):
+             no hit-test layer is stacked on top of the video swap chain. -->
+
+        <!-- Title overlay (sits under the window's transparent drag region) -->
+        <Grid x:Name="TitleOverlay" VerticalAlignment="Top" Height="72" IsHitTestVisible="False" Visibility="Visible">
+            <Grid.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Color="#99000000" Offset="0" />
+                    <GradientStop Color="#00000000" Offset="1" />
+                </LinearGradientBrush>
+            </Grid.Background>
+            <TextBlock x:Name="TitleText" Margin="16,13,160,0" VerticalAlignment="Top" Foreground="White"
+                       FontSize="14" FontWeight="SemiBold" TextTrimming="CharacterEllipsis" />
+        </Grid>
+
+        <!-- Loading / buffering -->
+        <ProgressRing x:Name="Spinner" Width="56" Height="56" IsActive="False" IsHitTestVisible="False" Visibility="Collapsed"
+                      Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" />
+
+        <!-- OSD toast -->
+        <Border x:Name="Toast" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,56,0,0"
+                Padding="12,7" CornerRadius="8" Opacity="0" IsHitTestVisible="False" Visibility="Collapsed"
+                Background="{ThemeResource OscPopupBackgroundBrush}" BorderBrush="{ThemeResource OscBorderBrush}" BorderThickness="1">
+            <TextBlock x:Name="ToastText" FontSize="14" FontWeight="SemiBold" />
+        </Border>
+
+        <!-- Errors -->
+        <InfoBar x:Name="ErrorBar" Severity="Error" IsOpen="False" IsClosable="True" Title="Can't play this file"
+                 HorizontalAlignment="Center" VerticalAlignment="Top" Margin="16,56,16,0" MaxWidth="640" />
+
+        <!-- Control bar -->
+        <controls:OscBar x:Name="Osc" VerticalAlignment="Bottom" HorizontalAlignment="Center"
+                         Width="640" Margin="16,0,16,24" />
+
+        <!-- Right side panels -->
+        <Border x:Name="SidePanel" HorizontalAlignment="Right" Width="360" Margin="0,48,12,12" Visibility="Collapsed"
+                CornerRadius="12" Background="{ThemeResource OscBackgroundBrush}"
+                BorderBrush="{ThemeResource OscBorderBrush}" BorderThickness="1">
+            <Border.RenderTransform>
+                <TranslateTransform x:Name="SidePanelTransform" />
+            </Border.RenderTransform>
+            <Grid>
+                <controls:QuickSettingsPanel x:Name="QuickSettings" Visibility="Collapsed" />
+                <controls:PlaylistPanel x:Name="PlaylistPanel" Visibility="Collapsed" />
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

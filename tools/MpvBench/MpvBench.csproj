@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Headless libmpv playback benchmark (no UI): isolates mpv's own rendering/decoding cost. -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <PlatformTarget>$(Platform)</PlatformTarget>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Otear.Mpv\Otear.Mpv.csproj" />
+    <Compile Include="..\ThreadTimes.cs" Link="ThreadTimes.cs" />
+  </ItemGroup>
+  <Import Project="$(OtearRoot)build\Mpv.targets" />
+</Project>

@@ -170,6 +170,7 @@ public sealed partial class MainWindow : Window, IPlayerHost
             if (IsFullscreen) ToggleFullscreen();
         }
         UpdateCaptionButtons();
+        UpdateDragRegion();
     }
 
     private void ApplyTheme()
@@ -190,6 +191,18 @@ public sealed partial class MainWindow : Window, IPlayerHost
     {
         _controlsVisible = visible;
         UpdateCaptionButtons();
+        UpdateDragRegion();
+    }
+
+    /// <summary>
+    /// The title-bar strip is a drag region, where Windows draws the pointer: while the player's controls are
+    /// hidden (and in full screen) it is video like the rest, so the pointer hides there too. Moving the mouse
+    /// brings the controls, and the drag region, back.
+    /// </summary>
+    private void UpdateDragRegion()
+    {
+        var visibility = !IsFullscreen && (!_playerMode || _controlsVisible) ? Visibility.Visible : Visibility.Collapsed;
+        if (TitleBarArea.Visibility != visibility) TitleBarArea.Visibility = visibility;
     }
 
     private (bool Player, bool Visible, bool Dark)? _captionState;
@@ -321,7 +334,7 @@ public sealed partial class MainWindow : Window, IPlayerHost
         if (!args.DidPresenterChange) return;
         bool fs = IsFullscreen;
         Player.ControlBar.SetFullscreen(fs);
-        TitleBarArea.Visibility = fs ? Visibility.Collapsed : Visibility.Visible;
+        UpdateDragRegion();
         _sizing.Enabled = !fs && Settings.LockAspectRatio;
     }
 
@@ -533,15 +546,21 @@ public sealed partial class MainWindow : Window, IPlayerHost
         if (HandleKey(e.Key, ctrl, shift))
         {
             e.Handled = true;
-            if (_playerMode) Player.NotifyActivity();
+            if (_playerMode) Player.NotifyActivity(showPointer: false);
         }
     }
 
-    /// <summary>False for elements in popups (flyouts, menus, dialogs): their visual tree does not reach Root.</summary>
+    /// <summary>
+    /// False for elements in popups (flyouts, menus, dialogs): their visual tree does not reach Root. The window's
+    /// own elements above Root count as main content: clicking the video (which cannot take focus) or closing a
+    /// menu puts the focus on the window's root ScrollViewer, and the shortcuts must keep working then.
+    /// </summary>
     private bool IsInMainContent(DependencyObject element)
     {
         for (var d = element; d is not null; d = VisualTreeHelper.GetParent(d))
             if (ReferenceEquals(d, Root)) return true;
+        for (var d = VisualTreeHelper.GetParent(Root); d is not null; d = VisualTreeHelper.GetParent(d))
+            if (ReferenceEquals(d, element)) return true;
         return false;
     }
 

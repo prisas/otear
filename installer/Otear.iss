@@ -3,7 +3,7 @@
 ; Per-user install by default (no admin prompt); an all-users install can be chosen in the first dialog.
 
 #ifndef AppVersion
-  #define AppVersion "0.1.3"
+  #define AppVersion "0.1.5"
 #endif
 #ifndef Arch
   #define Arch "x64"

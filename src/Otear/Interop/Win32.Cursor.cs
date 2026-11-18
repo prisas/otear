@@ -68,14 +68,18 @@ internal static unsafe partial class Win32
     [LibraryImport("user32.dll")]
     private static partial nint GetAncestor(nint hwnd, uint flags);
 
-    [LibraryImport("user32.dll")]
-    private static partial nint GetForegroundWindow();
-
     [LibraryImport("user32.dll", EntryPoint = "GetClassNameW", StringMarshalling = StringMarshalling.Utf16)]
     private static partial int GetClassName(nint hwnd, char* name, int max);
 
     [LibraryImport("user32.dll", SetLastError = true)]
     private static partial uint SendInput(uint count, INPUT* inputs, int size);
+
+    [LibraryImport("user32.dll")]
+    [return: MarshalAs(UnmanagedType.Bool)]
+    private static partial bool ScreenToClient(nint hwnd, ref POINT point);
+
+    [LibraryImport("user32.dll")]
+    private static partial short GetAsyncKeyState(int key);
 
     [LibraryImport("user32.dll")]
     [return: MarshalAs(UnmanagedType.Bool)]
@@ -98,25 +102,52 @@ internal static unsafe partial class Win32
     [return: MarshalAs(UnmanagedType.Bool)]
     private static partial bool DeleteDC(nint hdc);
 
-    /// <summary>
-    /// True when the pointer is over the XAML content (not the title bar) of <paramref name="window"/> and that
-    /// window is in the foreground, i.e. where a hidden pointer is expected to be invisible.
-    /// </summary>
-    public static bool IsPointerOverContent(nint window)
+    /// <summary>The pointer position in physical screen pixels.</summary>
+    public static bool TryGetCursorPos(out int x, out int y)
     {
-        if (window == 0 || GetForegroundWindow() != window || !GetCursorPos(out var pt)) return false;
+        bool ok = GetCursorPos(out var p);
+        (x, y) = (p.X, p.Y);
+        return ok;
+    }
+
+    /// <summary>
+    /// True when the pointer is over the XAML content of <paramref name="window"/> (not its title bar, caption
+    /// buttons or another window on top), with where it is in that content, in physical pixels.
+    /// </summary>
+    public static bool TryGetPointerOverContent(nint window, out int x, out int y)
+    {
+        x = y = 0;
+        if (window == 0 || !GetCursorPos(out var pt)) return false;
         nint under = WindowFromPoint(pt);
         if (under == 0 || GetAncestor(under, GA_ROOT) != window) return false;
         char* name = stackalloc char[64];
         int n = GetClassName(under, name, 64);
-        return new ReadOnlySpan<char>(name, n).SequenceEqual("Microsoft.UI.Content.DesktopChildSiteBridge");
+        if (!new ReadOnlySpan<char>(name, n).SequenceEqual("Microsoft.UI.Content.DesktopChildSiteBridge")) return false;
+        if (!ScreenToClient(under, ref pt)) return false;
+        (x, y) = (pt.X, pt.Y);
+        return true;
     }
 
-    /// <summary>True when the pointer currently drawn on screen has any visible pixel.</summary>
-    public static bool IsPointerVisible()
+    /// <summary>The cursor Windows is drawing now, or false when no cursor is shown at all.</summary>
+    public static bool TryGetShownCursor(out nint cursor)
     {
         var info = new CURSORINFO { cbSize = sizeof(CURSORINFO) };
-        if (!GetCursorInfo(ref info) || (info.flags & CURSOR_SHOWING) == 0 || info.hCursor == 0) return false;
+        cursor = GetCursorInfo(ref info) && (info.flags & CURSOR_SHOWING) != 0 ? info.hCursor : 0;
+        return cursor != 0;
+    }
+
+    /// <summary>True while any mouse button is held down (a drag or click is in progress).</summary>
+    public static bool IsAnyMouseButtonDown()
+    {
+        foreach (int vk in (ReadOnlySpan<int>)[0x01, 0x02, 0x04, 0x05, 0x06]) // left, right, middle, X1, X2
+            if ((GetAsyncKeyState(vk) & 0x8000) != 0) return true;
+        return false;
+    }
+
+    /// <summary>True when <paramref name="cursor"/> draws any visible pixel (false for a blank cursor).</summary>
+    public static bool IsCursorVisible(nint cursor)
+    {
+        if (cursor == 0) return false;
 
         // Draw the cursor onto two different backgrounds: a blank cursor leaves both untouched.
         const int Size = 256; // the largest accessibility pointer size
@@ -136,7 +167,7 @@ internal static unsafe partial class Win32
             foreach (uint background in (ReadOnlySpan<uint>)[0x0000FF00u, 0x00FF00FFu])
             {
                 pixels.Fill(background);
-                DrawIconEx(dc, 0, 0, info.hCursor, 0, 0, 0, 0, DI_NORMAL);
+                DrawIconEx(dc, 0, 0, cursor, 0, 0, 0, 0, DI_NORMAL);
                 // Colour only: GDI's mask drawing rewrites the (unused) alpha byte even where nothing shows, so
                 // comparing whole pixels took the blank cursor for a visible one.
                 foreach (uint pixel in pixels)

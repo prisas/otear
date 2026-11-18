@@ -10,7 +10,7 @@
     <!-- WinUI and libmpv are architecture specific: default to x64 when nothing is given. -->
     <Platform Condition="'$(Platform)' == '' Or '$(Platform)' == 'AnyCPU'">x64</Platform>
 
-    <Version>0.1.3</Version>
+    <Version>0.1.5</Version>
     <Product>Otear</Product>
     <Company>Otear contributors</Company>
     <Authors>Otear contributors</Authors>

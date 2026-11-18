@@ -28,7 +28,7 @@ public sealed partial class PlayerView : UserControl
     private readonly DispatcherQueueTimer _toastTimer;
     private readonly DispatcherQueueTimer _collapseTimer;
     private DateTime _lastActivity = DateTime.UtcNow;
-    private Point _lastPointer;
+    private int _lastPointerX = -1_000_000, _lastPointerY = -1_000_000; // screen pixels
     private bool _controlsVisible = true;
     private bool _pressed, _dragged, _swallowRelease;
     private Point _pressPoint;
@@ -304,16 +304,20 @@ public sealed partial class PlayerView : UserControl
 
     // ------------------------------------------------------------------ controls visibility
 
-    /// <summary>Called on any user activity (mouse, keyboard).</summary>
-    public void NotifyActivity()
+    /// <summary>
+    /// Called on user activity: shows the controls and restarts the auto-hide delay. Keyboard shortcuts pass
+    /// <paramref name="showPointer"/> false: they bring up the controls, but the mouse pointer only comes back
+    /// when the mouse moves.
+    /// </summary>
+    public void NotifyActivity(bool showPointer = true)
     {
         _lastActivity = DateTime.UtcNow;
-        ShowControls();
+        ShowControls(showPointer);
     }
 
-    private void ShowControls()
+    private void ShowControls(bool showPointer = true)
     {
-        _input.IsCursorHidden = false;
+        if (showPointer) _input.IsCursorHidden = false;
         if (_controlsVisible) return;
         _controlsVisible = true;
         _collapseTimer.Stop();
@@ -362,8 +366,12 @@ public sealed partial class PlayerView : UserControl
             if (!_controlsVisible || _input.IsCursorHidden) ShowControls();
             return;
         }
+        bool wasHidden = _input.IsCursorHidden;
         // Controls and mouse pointer go together (HideControls hides both).
         if ((DateTime.UtcNow - _lastActivity).TotalSeconds >= _settings.AutoHideSeconds) HideControls();
+        // While hidden, keep checking that the pointer really is: menus, popups and window changes can put the
+        // arrow back without the mouse moving. (Right after hiding, the surface checks by itself a moment later.)
+        if (wasHidden) _input.EnsureCursorHidden();
     }
 
     /// <summary>Stops timers and detaches from the player before the window is destroyed.</summary>
@@ -450,9 +458,12 @@ public sealed partial class PlayerView : UserControl
 
     private void OnRootPointerMoved(object sender, PointerRoutedEventArgs e)
     {
-        var p = e.GetCurrentPoint(Root).Position;
-        if (Math.Abs(p.X - _lastPointer.X) + Math.Abs(p.Y - _lastPointer.Y) < 2) return;
-        _lastPointer = p;
+        // Compared on screen, not in the window: when the window changes under a still pointer (full screen
+        // on/off, auto-fit, a moved window) WinUI reports a pointer move at a new position in the window, and
+        // that is not the user moving the mouse. Neither are the pointer's own one-pixel reclaim moves.
+        if (_input.IsReclaimingPointer || !Win32.TryGetCursorPos(out int x, out int y)) return;
+        if (Math.Abs(x - _lastPointerX) + Math.Abs(y - _lastPointerY) < 3) return;
+        (_lastPointerX, _lastPointerY) = (x, y);
         NotifyActivity();
     }
 

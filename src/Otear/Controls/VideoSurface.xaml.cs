@@ -7,6 +7,7 @@ using Microsoft.UI.Xaml.Media;
 using Otear.Interop;
 using Otear.Player;
 using Otear.Services;
+using Windows.Foundation;
 
 namespace Otear.Controls;
 
@@ -93,12 +94,20 @@ public sealed partial class VideoSurface : UserControl
 
     /// <summary>Id of the blank cursor that build/BlankCursor.targets adds to Otear.exe.</summary>
     private const uint BlankCursorId = 101;
-    private static InputCursor? s_blankCursor;
+    // Two cursor objects for the same blank image: switching between them is a change WinUI passes on to the
+    // screen, without showing the arrow in between.
+    private static readonly InputCursor?[] s_blankCursors = new InputCursor?[2];
     private static bool s_blankCursorFailed;
+    // Blank cursor handles seen on screen: when one of these is shown, the pointer is hidden and there is
+    // nothing to check.
+    private static readonly nint[] s_blankHandles = new nint[2];
     private bool _cursorHidden;
+    private int _blankIndex;
     private readonly DispatcherQueueTimer _cursorCheck;
-    private enum CursorCheck { Verify, Reapply, Done }
-    private CursorCheck _cursorCheckStep;
+    private enum Reclaim { None, Nudged, Reapplied }
+    private Reclaim _reclaim;
+    private int _reclaimCount;
+    private long _lastReclaim;
 
     /// <summary>
     /// Hides the mouse pointer while it is over the video. WinUI's input stack owns the pointer image, so the
@@ -110,53 +119,103 @@ public sealed partial class VideoSurface : UserControl
         set
         {
             if (_cursorHidden == value) return;
-            var cursor = value ? BlankCursor() : null;
+            var cursor = value ? BlankCursor(_blankIndex) : null;
             if (value && cursor is null) return;
             _cursorHidden = value;
-            ProtectedCursor = cursor;
             _cursorCheck.Stop();
+            _reclaim = Reclaim.None;
+            _reclaimCount = 0;
+            ProtectedCursor = cursor;
             if (value) ScheduleCursorCheck(150);
         }
     }
 
+    /// <summary>
+    /// True while the pointer is being moved one pixel aside and back to take it back (see
+    /// <see cref="EnsureCursorHidden"/>): those moves are not the user's.
+    /// </summary>
+    public bool IsReclaimingPointer => _reclaim != Reclaim.None;
+
     private void ScheduleCursorCheck(int delayMs)
     {
+        if (_reclaim != Reclaim.None) return;
         _cursorCheck.Stop();
-        _cursorCheckStep = CursorCheck.Verify;
         _cursorCheck.Interval = TimeSpan.FromMilliseconds(delayMs);
         _cursorCheck.Start();
     }
 
     /// <summary>
-    /// After hiding, checks that the pointer really disappeared. When the window changed under a still pointer
-    /// (full screen on/off, auto-fit resize, a closed menu), Windows keeps the pointer image of whatever was under
-    /// it before, and nothing short of real mouse input hands it back: then the pointer is moved one pixel
-    /// aside and back, and the blank cursor applied again.
+    /// Makes sure a hidden pointer really is invisible; called after hiding and then regularly while hidden.
+    /// WinUI only puts the element's cursor on screen when the cursor changes or the pointer moves. When
+    /// something else changed the pointer image under a still pointer (full screen on/off, a resize, a closed
+    /// menu or popup, another window), it stays that way, and nothing short of real mouse input hands it back:
+    /// then the pointer is moved one pixel aside and back, and the blank cursor applied again.
+    /// The common case, the blank cursor on screen, costs one GetCursorInfo call.
     /// </summary>
+    public void EnsureCursorHidden()
+    {
+        if (!_cursorHidden || _reclaim != Reclaim.None) return;
+        if (!Win32.TryGetShownCursor(out nint shown) || shown == s_blankHandles[0] || shown == s_blankHandles[1]) return;
+        // Only where this element's cursor applies: over the video, not the title bar, another window, a menu or
+        // another element on top of the video.
+        if (XamlRoot is not { } root || VisualTreeHelper.GetOpenPopupsForXamlRoot(root).Count > 0) return;
+        if (!Win32.TryGetPointerOverContent(WindowHandle, out int x, out int y)) return;
+        double scale = root.RasterizationScale;
+        if (!IsTopmostAt(new Point(x / scale, y / scale), root)) return;
+        if (!Win32.IsCursorVisible(shown))
+        {
+            // Our blank cursor (or another invisible one): remember it so the next checks are cheap.
+            s_blankHandles[s_blankHandles[0] == 0 ? 0 : 1] = shown;
+            return;
+        }
+        // Not during a click or drag, and without fighting something that keeps putting the arrow back.
+        if (Win32.IsAnyMouseButtonDown() || _reclaimCount >= 3 || Environment.TickCount64 - _lastReclaim < 700) return;
+        if (!Win32.NudgePointer()) return;
+        _reclaimCount++;
+        _lastReclaim = Environment.TickCount64;
+        _reclaim = Reclaim.Nudged;
+        _cursorCheck.Stop();
+        _cursorCheck.Interval = TimeSpan.FromMilliseconds(50);
+        _cursorCheck.Start();
+    }
+
     private void OnCursorCheck()
     {
-        if (!_cursorHidden) return;
-        switch (_cursorCheckStep)
+        switch (_reclaim)
         {
-            case CursorCheck.Verify:
-                if (!Win32.IsPointerOverContent(WindowHandle) || !Win32.IsPointerVisible()) return;
-                if (!Win32.NudgePointer()) return;
-                _cursorCheckStep = CursorCheck.Reapply;
+            case Reclaim.Nudged:
+                // The injected moves have been delivered (timer ticks come after input) and the pointer belongs to
+                // the video again. Re-apply the blank cursor as a change, so WinUI puts it on screen.
+                _reclaim = Reclaim.Reapplied;
+                if (_cursorHidden && BlankCursor(_blankIndex ^ 1) is { } other)
+                {
+                    _blankIndex ^= 1;
+                    ProtectedCursor = other;
+                }
                 _cursorCheck.Interval = TimeSpan.FromMilliseconds(50);
                 _cursorCheck.Start();
                 break;
-            case CursorCheck.Reapply:
-                // The injected moves have been delivered (timer ticks come after input). WinUI only pushes the
-                // cursor to the screen when it changes, so go through the default cursor first.
-                ProtectedCursor = null;
-                _cursorCheckStep = CursorCheck.Done;
-                _cursorCheck.Interval = TimeSpan.FromMilliseconds(50);
-                _cursorCheck.Start();
+            case Reclaim.Reapplied:
+                _reclaim = Reclaim.None;
+                EnsureCursorHidden();
                 break;
-            case CursorCheck.Done:
-                ProtectedCursor = s_blankCursor;
+            default:
+                EnsureCursorHidden();
                 break;
         }
+    }
+
+    /// <summary>True when the topmost hit-testable element at <paramref name="point"/> is (inside) this one.</summary>
+    private bool IsTopmostAt(Point point, XamlRoot root)
+    {
+        if (root.Content is not UIElement content) return false;
+        foreach (var element in VisualTreeHelper.FindElementsInHostCoordinates(point, content))
+        {
+            for (DependencyObject? d = element; d is not null; d = VisualTreeHelper.GetParent(d))
+                if (ReferenceEquals(d, this)) return true;
+            return false;
+        }
+        return false;
     }
 
     /// <summary>Stops the pointer check timer before the window is destroyed.</summary>
@@ -164,15 +223,16 @@ public sealed partial class VideoSurface : UserControl
     {
         _cursorCheck.Stop();
         _cursorHidden = false;
+        _reclaim = Reclaim.None;
     }
 
-    private static InputCursor? BlankCursor()
+    private static InputCursor? BlankCursor(int index)
     {
-        if (s_blankCursor is null && !s_blankCursorFailed)
+        if (s_blankCursors[index] is null && !s_blankCursorFailed)
         {
             try
             {
-                s_blankCursor = InputDesktopResourceCursor.CreateFromModule(Path.GetFileName(Environment.ProcessPath!), BlankCursorId);
+                s_blankCursors[index] = InputDesktopResourceCursor.CreateFromModule(Path.GetFileName(Environment.ProcessPath!), BlankCursorId);
             }
             catch (Exception ex)
             {
@@ -180,9 +240,8 @@ public sealed partial class VideoSurface : UserControl
                 Log.Warn($"Blank cursor resource not available; the pointer will not auto-hide: {ex.Message}");
             }
         }
-        return s_blankCursor;
+        return s_blankCursors[index];
     }
-
     /// <summary>Detaches the last frame (e.g. when returning to the welcome screen).</summary>
     public void Clear()
     {
